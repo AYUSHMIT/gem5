@@ -88,30 +88,41 @@ class SyscallCoverage:
         Analyze syscall coverage for an architecture.
         
         Returns dict mapping syscall name to implemented status.
+        
+        Note: This is a demonstration/mock implementation using heuristics.
+        For production use, this should:
+        1. Parse actual gem5 syscall tables (e.g., src/arch/x86/linux/syscall_tbl.hh)
+        2. Check for SyscallDesc entries with actual implementations
+        3. Verify functions are not marked as 'Unimplemented'
+        
+        To implement real parsing:
+        - Use regex to find SyscallDesc entries in gem5 source
+        - Check for function implementations in syscall_emul.hh
+        - Cross-reference with architecture-specific tables
         """
-        # Simplified: In reality would parse actual syscall tables
-        # This is a mock implementation for demonstration
+        # TODO: Replace with actual gem5 source parsing
+        # Current implementation uses statistical approximation for demo purposes
         
         coverage = {}
         
         # x86-64 has good coverage
         if arch.lower() in ['x86', 'x86_64', 'x86-64']:
-            impl_rate = 0.85  # 85% implemented
+            impl_rate = 0.85  # 85% implemented (approximate)
             
         # ARM has decent coverage
         elif arch.lower() in ['arm', 'aarch64', 'arm64']:
-            impl_rate = 0.75  # 75% implemented
+            impl_rate = 0.75  # 75% implemented (approximate)
             
         # RISC-V has moderate coverage
         elif arch.lower() in ['riscv', 'riscv64']:
-            impl_rate = 0.65  # 65% implemented
+            impl_rate = 0.65  # 65% implemented (approximate)
             
         else:
-            impl_rate = 0.50  # 50% for others
+            impl_rate = 0.50  # 50% for others (approximate)
         
-        # Simulate implementation status
+        # Simulate implementation status (deterministic for reproducibility)
         import random
-        random.seed(42)  # Deterministic
+        random.seed(42)  # Deterministic for consistent demo output
         
         for category, syscalls in COMMON_SYSCALLS.items():
             for syscall in syscalls:

@@ -124,10 +124,14 @@ class SyscallTracer:
             return SyscallEntry(tick, 'cpu0', name, args)
         
         # Match syscall return
+        # Note: This assumes returns are in order after their corresponding calls
+        # For production use, consider matching by tick or syscall name
         match = re.search(r'(\d+):\s+.*?returned\s+(-?\d+)', line)
         if match and self.syscalls:
             result = int(match.group(2))
-            self.syscalls[-1].result = result
+            # Only update if the last syscall doesn't have a result yet
+            if self.syscalls[-1].result is None:
+                self.syscalls[-1].result = result
             
         return None
     

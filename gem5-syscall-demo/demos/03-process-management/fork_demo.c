@@ -21,7 +21,7 @@ int main() {
     if (pid < 0) {
         // Fork failed
         perror("fork");
-        return 1;
+        return EXIT_FAILURE;
         
     } else if (pid == 0) {
         // Child process
