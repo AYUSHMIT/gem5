@@ -1,0 +1,66 @@
+# gem5 Syscall Demo .gitignore
+
+# Compiled binaries
+*.o
+*.out
+*.exe
+hello
+hello_raw
+fileops
+dirops
+fork_demo
+multiprocess
+threading_demo
+socket_demo
+mmap_demo
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# gem5 output
+m5out/
+*.trace
+*.out
+
+# Generated reports
+*.html
+*.json
+*.pdf
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+/tmp/
+*.tmp
+*.log
+
+# Test artifacts
+*.test
+test_output/
